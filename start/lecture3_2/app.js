@@ -10,7 +10,7 @@ class App{
 	}	
     
     resize(){
-        
+         
     }
     
 	render( ) {   
