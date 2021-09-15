@@ -43,8 +43,6 @@ class App {
 	}
 
 
-
-	
 	render() {
 		this.mesh.rotateY(0.1);
 		this.renderer.render(this.scene, this.camera);
