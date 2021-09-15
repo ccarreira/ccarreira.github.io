@@ -27,14 +27,15 @@ class App {
 		this.renderer.setAnimationLoop(this.render.bind(this));
 
 		//const geometry = new THREE.CircleGeometry(1,312, Math.PI, Math.PI/2);
-
-		const geometry = this.createPolygonGeometry();
-
+		//const geometry = this.createPolygonGeometry();
+		const geometry = this.createStarGeometry(0.1, 1, 3);
 		const material = new THREE.MeshStandardMaterial({ color: 0xFF0000 })
 		this.mesh = new THREE.Mesh(geometry, material);
 		this.scene.add(this.mesh);
 
 		const controls = new OrbitControls(this.camera, this.renderer.domElement);
+		controls.enableZoom = false;
+
 		window.addEventListener('resize', this.resize.bind(this));
 	}
 
