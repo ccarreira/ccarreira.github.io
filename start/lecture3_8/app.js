@@ -19,7 +19,7 @@ class App {
         const ambient = new THREE.HemisphereLight(0xffffff, 0xbbbbff, 0.5);
         this.scene.add(ambient);
 
-        const light = new THREE.DirectionalLight(0xFF0000, 1.5);
+        const light = new THREE.DirectionalLight(0xFF0000, 11.5);
         light.position.set(0.2, 1, 1);
         this.scene.add(light);
 
