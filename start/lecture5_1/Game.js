@@ -64,12 +64,18 @@ class Game{
     }
     
 	load(){
-        
+        this.loading = true;
+        this.LoadingBar.visible = true;
+
+        this.loadSkybox();
+        this.plane = new Plane(this);
     }
 
     loadSkybox(){
-        
-    }		
+        this.scene.background = new THREE.CubeTextureLoader()
+            .setPath(`$`)
+    }
+
 
     updateCamera(){
         
