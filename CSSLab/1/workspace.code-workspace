@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../../DCD5/LAYOUTS/17 - OSCAR/EXPORTS/ANIMATIONS"
+		}
+	],
+	"settings": {
+		"javascript.inlayHints.parameterNames.enabled": "all"
+	}
+}
