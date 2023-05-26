@@ -1,0 +1,62 @@
+
+.marquee-01 {
+  position: relative;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /*  padding: 20px;*/
+  height: 508px;
+  background-color: #0071CEff;
+  color: white;
+  z-index: 10000;
+}
+
+.marquee-02 {
+  position: relative;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  /*  padding: 20px;*/
+  height: 288px;
+  background-color: #0071CEff;
+  color: white;
+  z-index: 10000;
+}
+
+.marquee-H1 {
+  font-family: Spartan;
+  font-weight: 600;
+  font-size: 128px;
+  text-align: center;
+  margin: 20px;
+}
+
+.marquee-H2 {
+font-family: 'Spartan';
+font-style: normal;
+font-weight: 600;
+font-size: 96px;
+line-height: 108px;
+text-align: center;
+letter-spacing: -8px;
+}
+
+.marquee-H3 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 70px;
+  text-align: center;
+  letter-spacing: 0.6px;
+}
+
+

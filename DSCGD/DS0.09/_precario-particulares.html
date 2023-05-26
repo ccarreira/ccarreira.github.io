@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS2023</title>
+    <link rel="stylesheet" type="text/css" href="DS.css">
+    <link rel="stylesheet" type="text/css" href="DS-buttons.css">
+    <link rel="stylesheet" type="text/css" href="DS-marquees.css">
+    <link rel="stylesheet" type="text/css" href="DS-video.css">
+    <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+    <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+    <link rel="stylesheet" type="text/css" href="DS-animations.css">
+
+    <style></style>
+</head>
+
+<body>
+    <script src="qrcode.min.js"></script>
+    <header>
+        <!-- Marquee layer -->
+        <div class="marquee-02 DARKGREEN_BKG">
+            <div class="marquee-H2 fadein">Preçário</div>
+            <div class="marquee-H3">Particulares</div>
+        </div>
+    </header>
+    <main>
+        <div id="background">
+            <img src="IMG/bkg-precario2.jpg">
+        </div>
+
+        <nav id="menu_precario-particulares" class="nav-sec nav-sec-03 WHITE_BKG" data-default="true">
+
+            <div class="button B1b btSub slot1 DARKGREEN_BOR">
+                <img src="IMG/empty.svg">
+                <div>Comissoes e Despesas</div>
+            </div>
+
+            <div class="button B1b btSub slot2 DARKGREEN_BOR">
+                <img src="IMG/empty.svg">
+                <div>Fundos de Investimento</div>
+            </div>
+
+            <div class="button B1b btSub slot3 DARKGREEN_BOR">
+                <img src="IMG/empty.svg">
+                <div>Comissoes e Despesas</div>
+            </div>
+
+            <div class="button B1b btSub slot4 DARKGREEN_BOR">
+                <img src="IMG/empty.svg">
+                <div>Comissoes e Despesas</div>
+            </div>
+
+            <div class="button B1b btSub slot5 DARKGREEN_BOR">
+                <img src="IMG/empty.svg">
+                <div>Comissoes e Despesas</div>
+            </div>
+
+            <div class="button B1b btSub slot6 DARKGREEN_BOR">
+                <img src="IMG/empty.svg">
+                <div>Servicos Associados</div>
+            </div>
+
+        </nav>
+
+    </main>
+
+    <footer>
+        <!-- Bottom menu layer -->
+        <nav class="nav-main DARKGREEN_BKG">
+            <div id="bt_voltar" class="button B1b btMainDarkM slot1">
+                <img src="IMG/voltar.svg">
+                <div>Voltar</div>
+            </div>
+
+            <div id="bt_qrcode" class="button B1b btMain slot3 DARKGREEN_BOR">
+                <img class="tint" src="IMG/qrcodeDARKGREEN.svg">
+                <div>Ver no telemóvel</div>
+            </div>
+        </nav>
+    </footer>
+
+    <!-- Full screen layer -->
+    <div id="fullscreenLayer" class="CGDDARK_BKG"></div>
+
+    <!-- QR code layer -->
+    <div id="qrcodeLayer" class="WHITE_BKG"></div>
+
+    <script src="ds.js"></script>
+    <script src="DS-qrcode.js"></script>
+
+    <script>
+        let menuManager;
+        let qrCodeManager;
+
+        window.onload = function () {
+            menuManager = new MenuManager();
+            menuManager.showDefaultMenu();
+            qrCodeManager = new DS_QRCodeManager();
+            //  startFallDownAnimation();
+        }
+    </script>
+
+    <script>
+        /*     document.getElementById('bt_precario_empresas').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        menuManager.goToContent('_precario-empresas.html', 'precario');
+    });
+    document.getElementById('bt_precario_condominios').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        menuManager.goToContent('_precario-empresas.html', 'precario');
+    });
+    document.getElementById('bt_precario_particulares').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        menuManager.goToContent('_precario-particulares.html', 'precario');
+    });
+    document.getElementById('bt_precario_contabilistas').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        menuManager.goToContent('_precario-empresas.html', 'precario');
+    });
+    document.getElementById('bt_precario_freelancers').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        menuManager.goToContent('_precario-empresas.html', 'precario');
+    }); */
+
+        document.getElementById('bt_voltar').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goBack();
+        });
+        document.getElementById('bt_qrcode').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.showQRcode(event);
+        });
+        document.getElementById('fullscreenLayer').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.hideQRcode(event)
+        });
+    </script>
+
+
+</body>
+
+</html>

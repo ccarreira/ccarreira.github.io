@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS2023</title>
+    <link rel="stylesheet" type="text/css" href="DS.css">
+    <link rel="stylesheet" type="text/css" href="DS-buttons.css">
+    <link rel="stylesheet" type="text/css" href="DS-marquees.css">
+    <link rel="stylesheet" type="text/css" href="DS-video.css">
+    <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+    <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+    <link rel="stylesheet" type="text/css" href="DS-animations.css">
+    <style>
+        .titulo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-left: 120px;
+            padding-top: 360px;
+        }
+
+        .section01 {
+            position: absolute;
+            width: 1080px;
+            height: 480px;
+            left: 0px;
+            top: 768px;
+            padding-left: 120px;
+            padding-top: 48px;
+        }
+
+        .section01Bt {
+            position: absolute;
+            left: 696px;
+            top: 48px;
+        }
+
+        .section02 {
+            position: absolute;
+            width: 1080px;
+            height: 336px;
+            left: 0px;
+            top: 1248px;
+        }
+
+        .grid-container {
+            display: grid;
+         /*   grid-template-columns: repeat(3, 1fr);*/
+            grid-template-columns: 180px 290px 340px; 
+            grid-gap: 48px;
+            padding-left: 120px;
+            padding-right: 144px;
+            padding-bottom: 48px;
+            padding-top: 48px;
+        }
+
+        .grid-item {
+            padding-left: 20px;
+        }
+
+        .grid-item p {
+            margin: 0px 0;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="marquee-02">
+            <div class="marquee-H2">Crédito Pessoal</div>
+            <div class="marquee-H3">Expresso Multifinalidade</div>
+        </div>
+    </header>
+
+    <main>
+        <div id="background">
+            <img src="IMG/bkg-credito-landing.jpg">
+        </div>
+
+        <div class="titulo txtH2b WHITE_TXT">
+            Faça a <BR>viagem dos <BR>seus sonhos
+        </div>
+        <section class="section01 WHITE_BKG">
+            <div style="width:440px" class="B3">
+                <span class="B1">Financiamento em 48H</span><BR>
+                Condicionado à assinatura do contrato de crédito por todos os seus intervenientes até 12h, após a
+                comunicação de aprovação da proposta de crédito pela CGD. Só aplicável em dias úteis.<BR><BR>
+                <span class="B1">Aprovação em 24H</span><BR>
+                Condicionada à entrega de toda a informação e documentação necessária para a análise da proposta de
+                crédito pela CGD. Só aplicável em dias úteis.
+            </div>
+
+            <div onclick="menuManager.goToContent('_creditopessoal-exemplo_campanha.html');" class="button B1b btSub section01Bt">
+                <img src="IMG/multi.svg">
+                <div>Ver<BR>exemplo</div>
+            </div>
+
+        </section>
+
+        <section class="section02 CGDBLUE_BKG WHITE_TXT">
+            <div class="grid-container">
+                <div class="grid-item">
+                    <p class="B1b">Montante</p><BR>
+                    <p class="B3">Mínimo</p>
+                    <p class="B1n">3.000<span class="B1">€</span></p><BR>
+                    <p class="B3">Máximo</p>
+                    <p class="B1n">75.000<span class="B1">€</span></p>
+                </div>
+                <div class="grid-item">
+                    <p class="B1b">Prazo</p><BR>
+                    <p class="B3">Mínimo</p>
+                    <p class="B1n">24 <span class="B1">meses</span></p>
+                    <p class="B3">(2 anos)</p><BR>
+                    <p class="B3">Máximo</p>
+                    <p class="B1n">44 <span class="B1">meses</span></p>
+                    <p class="B3">(7 anos)</p>
+                </div>
+                <div class="grid-item">
+                    <p class="B1">Crédito Pessoal</p>
+                    <p class="B1b">Expresso Multifinalidade</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <!-- Bottom menu layer -->
+        <nav class="nav-main CGDBLUE_BKG">
+            <div id="bt_voltar" class="button B1b btMainDarkM slot1">
+                <img src="IMG/voltar.svg">
+                <div>Voltar</div>
+            </div>
+            <div id="bt_precario" class="button B1b btMainDarkM slot2">
+                <img src="IMG/precario.svg">
+                <div>Preçário</div>
+            </div>
+            <div id="bt_qrcode" class="button B1b btMain Vx15 slot3 ">
+                <img src="IMG/qrcode.svg">
+                <div>Saiba mais, simule ou subscreva</div>
+            </div>
+        </nav>
+    </footer>
+
+    <!-- Full screen layer -->
+    <div id="fullscreenLayer" onclick="qrCodeManager.hideQRcode(event)"></div>
+
+    <!-- QR code layer -->
+    <div id="qrcodeLayer" class="WHITE_BKG"></div>
+
+    <script src="ds.js"></script>
+    <script src="DS-qrcode.js"></script>
+
+    <script>
+        let menuManager;
+        let qrCodeManager;
+
+        window.onload = function () {
+            menuManager = new MenuManager();
+            menuManager.showDefaultMenu();
+            qrCodeManager = new DS_QRCodeManager();
+        }
+    </script>
+
+<script>
+    document.getElementById('bt_voltar').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        menuManager.goBack();
+    });
+    document.getElementById('bt_precario').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        menuManager.goToContent('_precario.html');
+    });
+    document.getElementById('bt_qrcode').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        qrCodeManager.showQRcode(event);
+    });
+    document.getElementById('fullscreenLayer').addEventListener('click', function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        qrCodeManager.hideQRcode(event)
+    });
+</script>
+
+</body>
+
+</html>

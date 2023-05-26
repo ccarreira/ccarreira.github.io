@@ -1,0 +1,124 @@
+body,
+html {
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    background-color: #ffffff;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+footer {}
+
+main {}
+
+.nav-main {
+    background-color: white;
+    display: grid;
+    grid-template-columns: repeat(3, 240px);
+    grid-template-rows: repeat(1, 240px);
+    gap: 48px;
+    grid-template-areas:
+        "pos1 pos2 pos3";
+    padding-left: 120px;
+    padding-right: 144px;
+    padding-bottom: 48px;
+    padding-top: 48px;
+    z-index: 200;
+}
+
+.nav-sec {
+    /*display: grid;*/
+    display: none;
+    grid-template-columns: repeat(3, 240px);
+    grid-template-rows: repeat(2, 240px);
+    column-gap: 48px;
+    row-gap: 48px;
+    grid-template-areas:
+        "pos1 pos2 pos3"
+        "pos4 pos5 pos6";
+    padding-left: 120px;
+    padding-right: 144px;
+    padding-bottom: 144px;
+    padding-top: 48px;
+    z-index: -200;
+}
+
+:root {
+    --gradient-color1: rgba(0, 113, 206, 1);
+    --gradient-color2: rgba(255, 255, 255, 1);
+}
+
+.nav-sec-03 {
+    padding-bottom: 144px;
+}
+
+.nav-sec-02 {
+    padding-bottom: 48px;
+    row-gap: 96px;
+    --gradient-color1: rgba(255, 255, 255, 1);
+    --gradient-color2: rgba(255, 255, 255, 0.0);
+}
+
+.nav-sec-03 {
+    padding-bottom: 48px;
+}
+
+.rowColorTrick {
+    background: linear-gradient(to top, var(--gradient-color1) 0%, var(--gradient-color1) 50%, var(--gradient-color2) 50%);
+}
+
+/* Custom classes for grid-item positions */
+.slot1 {
+    grid-area: pos1;
+}
+
+.slot2 {
+    grid-area: pos2;
+}
+
+.slot3 {
+    grid-area: pos3;
+}
+
+.slot4 {
+    grid-area: pos4;
+}
+
+.slot5 {
+    grid-area: pos5;
+}
+
+.slot6 {
+    grid-area: pos6;
+}
+
+
+#background {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    overflow: hidden;
+    z-index: -1000;
+    /*CAUSA DELAY NA MUDANCA DE PAGINA*/
+    /*  animation: fadein 1.6s ease-out;*/
+}
+
+#background img {
+    animation: zoomYoYo 20s ease-in-out infinite;
+}

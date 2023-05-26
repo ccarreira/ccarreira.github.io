@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS2023</title>
+    <link rel="stylesheet" type="text/css" href="DS.css">
+    <link rel="stylesheet" type="text/css" href="DS-buttons.css">
+    <link rel="stylesheet" type="text/css" href="DS-marquees.css">
+    <link rel="stylesheet" type="text/css" href="DS-video.css">
+    <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+    <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+    <link rel="stylesheet" type="text/css" href="DS-animations.css">
+    <style>
+        .titulo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-left: 120px;
+            padding-top: 360px;
+        }
+
+        .section01 {
+            position: absolute;
+            width: 408px;
+            height: 1632px;
+            left: 672px;
+            top: 288px;
+            padding-left: 48px;
+            padding-top: 48px;
+        }
+
+        .section01 p {
+            margin: 10px 0;
+        }
+
+        .section01Bt {
+            position: absolute;
+            left: 696px;
+            top: 48px;
+        }
+
+        .section02 {
+            position: absolute;
+            width: 1080px;
+            height: 675px;
+            left: 0px;
+            top: 910px;
+        }
+
+        .grid-container {
+            display: grid;
+            /*   grid-template-columns: repeat(3, 1fr);*/
+            grid-template-columns: 240px 240px 320px;
+            grid-gap: 48px;
+            padding-left: 120px;
+            padding-right: 144px;
+            padding-bottom: 48px;
+            padding-top: 48px;
+        }
+
+        .grid-item {
+            padding-left: 20px;
+        }
+
+        .grid-item p {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="marquee-02">
+            <div class="marquee-H2">Crédito Pessoal</div>
+            <div class="marquee-H3">Exemplo de Crédito</div>
+        </div>
+    </header>
+
+    <main>
+        <div id="background">
+            <img src="IMG/bkg-credito-exemplo.jpg">
+        </div>
+
+        <div class="titulo txtH2b WHITE_TXT">
+
+        </div>
+
+        <section class="section02 CGDBLUE_BKG WHITE_TXT">
+            <div class="grid-container">
+                <div class="grid-item">
+                    <p class="B1b">TAN</p>
+                    <p class="B3">Taxa Anual<BR>
+                        Nominal</p>
+                    <p class="B1n">5,500<span class="B1">%</span></p><BR>
+
+                    <p class="B1b">TAEG</p>
+                    <p class="B3">Taxa Anual<BR>
+                        Efectiva Global</p>
+                    <p class="B1n">10,2<span class="B1">%</span></p><BR>
+
+                    <p class="B1b">MTIC</p>
+                    <p class="B3">Montante Total <BR>Imputado ao Consumidor</p>
+                    <p class="B1n">4.617,56<span class="B1">€</span></p>
+                </div>
+                <div class="grid-item">
+                    <p class="B1b">Comissões Mensais</p>
+                    <p class="B3">Manutenção <BR>de conta à ordem<BR>
+                        (+4 % I.S)</p>
+                    <p class="B1n">4,95<span class="B1">€/Mês</span></p><BR>
+
+                    <p class="B1b">Comissões Iniciais</p>
+                    <p class="B3">Não aplicável</p><BR>
+
+                    <p class="B3">Imposto do Selo <BR>de Abertura de Crédito</p>
+                    <p class="B1n">70,40<span class="B1">€</span></p>
+
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <section class="section01 WHITE_BKG">
+            <div style="width:440px" class="B3">
+                <p class="B1">Montante</p>
+                <p class="B3">Total do Crédito</p>
+                <p class="B1n">4.000<span class="B1">€</span></p><BR>
+
+                <p class="B1">Prazo</p>
+                <p class="B1n">36<span class="B1">meses</span></p><BR>
+
+                <p class="B1b">Prestação <BR>Mensal</p>
+                <p class="B3">Sem Imposto do Selo</p><BR>
+                <p class="B1n" style="font-size: 60px;">120,78<span class="B1">€</span></p><BR>
+
+                <div class="CGDBLUE_TXT">
+                    <p class="B1">Crédito Pessoal</p>
+                    <p class="B1b">Expresso <BR>Multifinalidade</p><BR><BR><BR><BR><BR><BR><BR>
+                </div>
+
+                <div id="qrcode" onclick="qrCodeManager.showQRcode(event)" class="button B1 btMain Vx15">
+                    <img src="IMG/qrcode.svg">
+                    <div>Saiba mais, simule ou subscreva</div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <!-- Bottom menu layer -->
+        <nav class="nav-main CGDBLUE_BKG">
+            <div id="bt_voltar" class="button B1b btMainDarkM slot1">
+                <img src="IMG/voltar.svg">
+                <div>Voltar</div>
+            </div>
+            <div id="bt_precario" class="button B1b btMainDarkM slot2">
+                <img src="IMG/precario.svg">
+                <div>Preçário</div>
+            </div>
+            <div id="bt_mais" class="button B1 btMain slot3 ">
+                <img src="IMG/forward.svg">
+                <div>Mais exemplos</div>
+            </div>
+        </nav>
+    </footer>
+
+    <!-- Full screen layer -->
+    <div id="fullscreenLayer" onclick="qrCodeManager.hideQRcode(event)"></div>
+
+    <!-- QR code layer -->
+    <div id="qrcodeLayer" class="WHITE_BKG"></div>
+
+    <script src="ds.js"></script>
+    <script src="DS-qrcode.js"></script>
+
+    <script>
+        let menuManager;
+        let qrCodeManager;
+
+        window.onload = function () {
+            menuManager = new MenuManager();
+            menuManager.showDefaultMenu();
+            qrCodeManager = new DS_QRCodeManager();
+        }
+    </script>
+    <script>
+        document.getElementById('bt_voltar').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goBack();
+        });
+        document.getElementById('bt_precario').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goToContent('_precario.html');
+        });
+        document.getElementById('bt_qrcode').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.showQRcode(event);
+        });
+        document.getElementById('fullscreenLayer').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.hideQRcode(event)
+        });
+    </script>
+</body>
+
+</html>

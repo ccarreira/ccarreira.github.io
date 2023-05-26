@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+
+    <button class="menu-item" data-menu="1">Menu 1</button>
+    <button class="menu-item" data-menu="2">Menu 2</button>
+    <button class="menu-item" data-menu="3">Menu 3</button>
+
+    <button onclick="goBack()">Go Back</button>
+
+    <script>
+        // Run on page load
+        window.onload = function () {
+            let navArr = JSON.parse(localStorage.getItem('navArr')) || [];
+            let currentMenu = JSON.parse(localStorage.getItem('currentMenu')) || null;
+
+            // Event listeners for all menu items
+            document.querySelectorAll('.menu-item').forEach(function (button) {
+                button.addEventListener('click', function (e) {
+                    // Save menu state in local storage
+                    localStorage.setItem('currentMenu', JSON.stringify(e.target.dataset.menu));
+
+                    // Example of navigation, replace with actual navigation
+                    // Push the current state to navigation array
+                    navArr.push({
+                        url: window.location.href + '?menu=' + e.target.dataset.menu,
+                        menu: e.target.dataset.menu
+                    });
+                    // Save the navigation array
+                    localStorage.setItem('navArr', JSON.stringify(navArr));
+                });
+            });
+
+            // Check if a menu was selected previously and set it as active
+            if (currentMenu) {
+                document.querySelector(`[data-menu="${currentMenu}"]`).classList.add('active');
+            }
+
+            window.goBack = function () {
+                // Pop the last navigation object
+                let prevPage = navArr.pop();
+
+                // Save the updated navigation array
+                localStorage.setItem('navArr', JSON.stringify(navArr));
+
+                // Use the data in prevPage to navigate back and set menu
+                if (prevPage) {
+                    localStorage.setItem('currentMenu', JSON.stringify(prevPage.menu));
+                    window.location.href = prevPage.url;
+                }
+            }
+        }
+    </script>
+
+</body>
+
+</html>
+
+<!-- No, data-menu is not a special keyword. It is a custom data attribute that is defined by the developer. In HTML, you can create custom attributes prefixed with data-. This is useful for embedding custom data attributes on all HTML elements.
+
+The data-* attributes are used to store custom data private to the page or application. The data-* attributes give us the ability to embed custom data attributes on all HTML elements. The stored (custom) data can then be used in the JavaScript on the page.
+
+Here's how you might use it:
+
+html
+Copy code
+<div id="myDiv" data-menu="home">Some content</div>
+Then in your JavaScript, you can access it like this:
+
+javascript
+Copy code
+let div = document.getElementById('myDiv');
+let menu = div.dataset.menu; // menu now holds the value "home"
+In your case, data-menu is used to keep track of the menu state that should be activated when the user navigates back to a page. This is not a built-in functionality, but a design choice made for this specific use case. -->

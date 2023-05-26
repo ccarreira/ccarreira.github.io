@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS2023</title>
+    <link rel="stylesheet" type="text/css" href="DS.css">
+    <link rel="stylesheet" type="text/css" href="DS-buttons.css">
+    <link rel="stylesheet" type="text/css" href="DS-marquees.css">
+    <link rel="stylesheet" type="text/css" href="DS-video.css">
+    <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+    <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+    <link rel="stylesheet" type="text/css" href="DS-animations.css">
+    <style></style>
+</head>
+
+<body>
+
+    <header>
+        <div class="marquee-02">
+            <div class="marquee-H2">Seguros</div>
+            <div class="marquee-H3">Outros</div>
+        </div>
+    </header>
+
+    <main>
+        <div id="background">
+            <img src="IMG/bkg-seguros-outros.jpg">
+        </div>
+
+        <nav id="menu_seguros" class="nav-sec nav-sec-03 WHITE_BKG" data-default="true">
+            <div class="button B1b btSub slot1">
+                <img src="IMG/empty.svg">
+                <div>Animais<BR>de<BR>Companhia</div>
+            </div>
+            <div class="button B1b btSub slot2">
+                <img src="IMG/empty.svg">
+                <div>Proteção ao<BR>Crédito<BR>Habitação</div>
+            </div>
+            <div class="button B1b btSub slot4">
+                <img src="IMG/empty.svg">
+                <div>Acidentes<BR>Pessoais</div>
+            </div>
+            <div class="button B1b btSub slot5">
+                <img src="IMG/empty.svg">
+                <div>Automóvel</div>
+            </div>
+            <div class="button B1b btSub slot6">
+                <img src="IMG/empty.svg">
+                <div>Emp.<BR>Doméstica</div>
+            </div>
+        </nav>
+
+    </main>
+    <footer>
+        <!-- Bottom menu layer -->
+        <nav class="nav-main CGDBLUE_BKG">
+            <div id="bt_voltar" class="button B1b btMainDarkM slot1">
+                <img src="IMG/voltar.svg">
+                <div>Voltar</div>
+            </div>
+            <div id="bt_precario" class="button B1b btMainDarkM slot2">
+                <img src="IMG/precario.svg">
+                <div>Preçário</div>
+            </div>
+            <div id="bt_qrcode" class="button B1b btMain slot3">
+                <img src="IMG/qrcode.svg">
+                <div>Ver no telemóvel</div>
+            </div>
+        </nav>
+    </footer>
+
+    <!-- Full screen layer -->
+    <div id="fullscreenLayer"></div>
+
+    <!-- QR code layer -->
+    <div id="qrcodeLayer" class="WHITE_BKG"></div>
+
+    <script src="ds.js"></script>
+    <script src="DS-qrcode.js"></script>
+
+    <script>
+        let menuManager;
+        let qrCodeManager;
+
+        window.onload = function () {
+            menuManager = new MenuManager();
+            menuManager.showDefaultMenu();
+            qrCodeManager = new DS_QRCodeManager();
+        }
+    </script>
+    <script>
+        document.getElementById('bt_voltar').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goBack();
+        });
+        document.getElementById('bt_precario').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goToContent('_precario.html');
+        });
+        document.getElementById('bt_qrcode').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.showQRcode(event);
+        });
+        document.getElementById('fullscreenLayer').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.hideQRcode(event)
+        });
+    </script>
+</body>
+
+</html>

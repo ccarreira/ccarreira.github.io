@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS2023</title>
+    <link rel="stylesheet" type="text/css" href="DS.css">
+    <link rel="stylesheet" type="text/css" href="DS-buttons.css">
+    <link rel="stylesheet" type="text/css" href="DS-marquees.css">
+    <link rel="stylesheet" type="text/css" href="DS-video.css">
+    <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+    <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+    <link rel="stylesheet" type="text/css" href="DS-animations.css">
+
+    <style></style>
+</head>
+
+<body>
+    <script src="qrcode.min.js"></script>
+    <header>
+        <nav class="marquee-01 ">
+            <nav class="marquee-H1 fadein">Cartões</nav>
+        </nav>
+    </header>
+    <main>
+        <div id="background">
+            <img src="IMG/bkg-cartoes.jpg">
+        </div>
+
+        <div id="menu_cartoes" class="nav-sec nav-sec-02 rowColorTrick" data-default="true">
+            <nav id="bt_cartoes_debito" class="button B1b btSub slot4">
+                <img src="IMG/empty.svg">
+                <nav>Cartões de Débito</nav>
+            </nav>
+            <nav id="bt_cartoes_credito" class="button B1b btSub slot5">
+                <img src="IMG/empty.svg">
+                <nav>Cartões de Crédito</nav>
+            </nav>
+            <nav id="bt_cartoes_prepagos" class="button B1b btSub slot6">
+                <img src="IMG/empty.svg">
+                <nav>Cartões Pré-pagos</nav>
+            </nav>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Bottom menu layer -->
+        <nav class="nav-main CGDBLUE_BKG">
+            <div id="bt_voltar" class="button B1b btMainDarkM slot1">
+                <img src="IMG/voltar.svg">
+                <div>Voltar</div>
+            </div>
+            <div id="bt_precario" class="button B1b btMainDarkM slot2">
+                <img src="IMG/precario.svg">
+                <div>Preçário</div>
+            </div>
+            <div id="bt_qrcode" class="button B1b btMain slot3 ">
+                <img src="IMG/qrcode.svg">
+                <div>Ver no telemóvel</div>
+            </div>
+        </nav>
+    </footer>
+
+
+    <!-- Full screen layer -->
+    <div id="fullscreenLayer" class="CGDDARK_BKG"></div>
+
+    <!-- QR code layer -->
+    <div id="qrcodeLayer" class="WHITE_BKG"></div>
+
+    <script src="ds.js"></script>
+    <script src="DS-qrcode.js"></script>
+
+    <script>
+        let menuManager;
+        let qrCodeManager;
+
+        window.onload = function () {
+            menuManager = new MenuManager();
+            menuManager.showDefaultMenu();
+            qrCodeManager = new DS_QRCodeManager();
+        }
+    </script>
+    <script>
+        document.getElementById('bt_cartoes_credito').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goToContent('_cartoescredito.html');
+        });
+/*         document.getElementById('bt_cartoes_debito').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goToContent('_cartoesdebito.html');
+        });
+        document.getElementById('bt_cartoes_prepagos').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goToContent('_cartoesprepagos.html');
+        });
+ */
+
+
+        document.getElementById('bt_voltar').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goBack();
+        });
+        document.getElementById('bt_precario').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goToContent('_precario.html');
+        });
+        document.getElementById('bt_qrcode').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.showQRcode(event);
+        });
+        document.getElementById('fullscreenLayer').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.hideQRcode(event)
+        });
+    </script>
+</body>
+
+</html>

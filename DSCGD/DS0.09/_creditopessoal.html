@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DS2023</title>
+    <link rel="stylesheet" type="text/css" href="DS.css">
+    <link rel="stylesheet" type="text/css" href="DS-buttons.css">
+    <link rel="stylesheet" type="text/css" href="DS-marquees.css">
+    <link rel="stylesheet" type="text/css" href="DS-video.css">
+    <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+    <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+    <link rel="stylesheet" type="text/css" href="DS-animations.css">
+    <style></style>
+</head>
+
+<body>
+    <header>
+        <div class="marquee-01 ">
+            <div class="marquee-H1">Crédito Pessoal</div>
+        </div>
+    </header>
+
+    <main>
+        <div id="background">
+            <img src="IMG/bkg-credito.jpg">
+        </div>
+
+        <nav id="menu_credito" class="nav-sec nav-sec-02 rowColorTrick" data-default="true">
+            <div id="bt_credito_campanha" class="button Hx2 btSub slot1 WHITE_BOR fadein">
+                <div class="img-text-wrapper">
+                    <img src="IMG/CTA-querviajar.png">
+                    <div class="button-campanha-text"> </div>
+                </div>
+            </div>
+
+            <div class="button B1b btSub slot4">
+                <img src="IMG/empty.svg">
+                <div id="bt_credito_multifinalidade" style="font-size: 30px;">Expresso Multifinalidade</div>
+            </div>
+            <div id="bt_credito_formacao" class="button B1b btSub slot5">
+                <img src="IMG/empty.svg">
+                <div>Formação</div>
+            </div>
+            <div id="bt_credito_auto" class="button B1b btSub slot6">
+                <img src="IMG/empty.svg">
+                <div>Auto</div>
+            </div>
+        </nav>
+
+    </main>
+
+    <footer>
+        <!-- Bottom menu layer -->
+        <nav class="nav-main CGDBLUE_BKG">
+            <div id="bt_voltar" class="button B1b btMainDarkM slot1">
+                <img src="IMG/voltar.svg">
+                <div>Voltar</div>
+            </div>
+            <div id="bt_precario" class="button B1b btMainDarkM slot2">
+                <img src="IMG/precario.svg">
+                <div>Preçário</div>
+            </div>
+            <div id="bt_qrcode" class="button B1b btMain slot3 ">
+                <img src="IMG/qrcode.svg">
+                <div>Ver no telemóvel</div>
+            </div>
+        </nav>
+    </footer>
+
+    <!-- Full screen layer -->
+    <div id="fullscreenLayer" class="CGDDARK_BKG"></div>
+
+    <!-- QR code layer -->
+    <div id="qrcodeLayer" class="WHITE_BKG"></div>
+
+    <script src="ds.js"></script>
+    <script src="DS-qrcode.js"></script>
+
+    <script>
+        let menuManager;
+        let qrCodeManager;
+
+        window.onload = function () {
+            menuManager = new MenuManager();
+            menuManager.showDefaultMenu();
+            menuManager.setupReturntoHP();
+            qrCodeManager = new DS_QRCodeManager();
+        }
+    </script>
+    <script>
+        document.getElementById('bt_credito_campanha').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goToContent('_creditopessoal_multi_campanha.html');
+        });
+
+        /*         document.getElementById('bt_credito_multifinalidade').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    menuManager.goToContent('_credito_expressomultifinalidade.html');
+                });
+                document.getElementById('bt_credito_formacao').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    menuManager.goToContent('_credito_formacao.html');
+                });
+                document.getElementById('bt_credito_auto').addEventListener('click', function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    menuManager.goToContent('_credito_auto.html');
+                }); */
+
+
+        document.getElementById('bt_voltar').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goBack();
+        });
+        document.getElementById('bt_precario').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            menuManager.goToContent('_precario.html');
+        });
+        document.getElementById('bt_qrcode').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.showQRcode(event);
+        });
+        document.getElementById('fullscreenLayer').addEventListener('click', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            qrCodeManager.hideQRcode(event)
+        });
+
+        /* resets the timer for the ads carroucel */
+
+        document.addEventListener('mousemove', () => menuManager.continueonthispage());
+        document.addEventListener('keydown', () => menuManager.continueonthispage());
+        document.addEventListener('click', () => menuManager.continueonthispage());
+        document.addEventListener('mouseup', () => menuManager.continueonthispage());
+    </script>
+</body>
+
+</html>

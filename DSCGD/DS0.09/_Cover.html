@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS2023</title>
+  <link rel="stylesheet" type="text/css" href="DS.css" />
+  <link rel="stylesheet" type="text/css" href="DS-buttons.css" />
+  <link rel="stylesheet" type="text/css" href="DS-marquees.css" />
+  <link rel="stylesheet" type="text/css" href="DS-video.css" />
+  <link rel="stylesheet" type="text/css" href="DS-ads.css" />
+  <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+  <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+  <link rel="stylesheet" type="text/css" href="DS-animations.css">
+  <style></style>
+</head>
+
+<body>
+
+  <video autoplay muted loop class="bg-video">
+    <source src="VIDEOS/23946_futureCell_HD_BG.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+  <main>
+
+    <div id="AdsDisplayArea"></div>
+
+    <nav id="menu_catalogo" class="nav-sec" data-default="true">
+      <div id="bt_catalogo_seguros" class="button B1b btSub slot4">
+        <img src="IMG/empty.svg">
+        <div>Seguros</div>
+      </div>
+
+      <div id="bt_catalogo_cartoes" class="button B1b btSub slot5">
+        <img src="IMG/empty.svg">
+        <div>Cartões</div>
+      </div>
+
+      <div id="bt_catalogo_credito_pessoal" class="button B1b btSub slot6">
+        <img src="IMG/empty.svg">
+        <div>Crédito Pessoal</div>
+      </div>
+    </nav>
+
+    <nav id="menu_precario" class="nav-sec">
+      <div class="button B1b btSub slot1">1</div>
+      <div class="button B1b btSub slot2">2</div>
+      <div class="button B1b btSub slot3">3</div>
+    </nav>
+  </main>
+
+  <footer>
+    <nav class="nav-main">
+      <div id="bt_precario" class="button B1b btMain slot1">
+        <img src="IMG/precario.svg">
+        <div>Preçário</div>
+      </div>
+
+      <div id="bt_catalogo" class="button B1b btMain slot3">
+        <img src="IMG/cartao.svg">
+        <div>Catálogo</div>
+      </div>
+    </nav>
+  </footer>
+
+  <script src="DS-AdsList.js"></script>
+  <script src="DS-AdsManager.js"></script>
+
+
+  <script src="DS.js"></script>
+  <!--   <script src="DS-qrcode.js"></script> -->
+
+  <script>
+    let menuManager;
+    let qrCodeManager;
+    let adDisplayManager;
+
+    window.onload = function () {
+      menuManager = new MenuManager();
+      menuManager.showDefaultMenu();
+
+      const params = {
+        menuManager: menuManager,
+        displayAreaId: "AdsDisplayArea",
+        adsList: getAdsList(),
+        /*This is the initial delay (in milliseconds) before the first ad is displayed after starting 
+        or restarting the ad display. Default value is 2000 (2 seconds).*/
+        startDelayDuration: 1000,
+        /*This is the duration (in milliseconds) each ad is displayed for. 
+        Default value is 6000 (6 seconds). This will be updated 
+        to the duration specified in each ad object.*/
+        displayDuration: 6000,
+        /*This is the delay (in milliseconds) between ads. Default value is 0 (0 second).*/
+        pauseDuration: 4000,
+        /*This is the duration (in milliseconds) of user inactivity after
+        which the ad display is restarted. Default value is 10000 (10 seconds).*/
+        idleDuration: 5000,
+        /* time to wait before restarting the ad sequence*/
+        loopPauseDuration: 15000
+      };
+
+      adDisplayManager = new AdDisplayManager(params);
+
+    }
+  </script>
+
+  <script>
+    document.getElementById('bt_catalogo_cartoes').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menuManager.goToContent('_cartoes.html');
+    });
+    document.getElementById('bt_catalogo_seguros').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menuManager.goToContent('_seguros.html');
+    });
+    document.getElementById('bt_catalogo_credito_pessoal').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menuManager.goToContent('_creditopessoal.html');
+    });
+
+    document.getElementById('bt_precario').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menuManager.goToContent('_precario.html');
+    });
+    document.getElementById('bt_catalogo').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      adDisplayManager.gotoSleep();
+      menuManager.updateMenu('menu_catalogo');
+    });
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS2023</title>
+  <link rel="stylesheet" type="text/css" href="DS.css" />
+  <link rel="stylesheet" type="text/css" href="DS-buttons.css" />
+  <link rel="stylesheet" type="text/css" href="DS-marquees.css" />
+  <link rel="stylesheet" type="text/css" href="DS-video.css" />
+  <link rel="stylesheet" type="text/css" href="DS-ads.css" />
+  <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+  <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+  <link rel="stylesheet" type="text/css" href="DS-animations.css">
+  <style></style>
+</head>
+
+<body>
+
+
+  <div id="AdsDisplayArea"></div>
+ 
+
+  <script src="DS-AdsList.js"></script>
+  <script src="DS-AdsManager.js"></script>
+
+
+  <script src="DS.js"></script>
+  <script src="DS-qrcode.js"></script>
+  <script>
+    let menuManager;
+    let qrCodeManager;
+    let adDisplayManager;
+
+    window.onload = function () {
+      menuManager = new MenuManager();
+      menuManager.showDefaultMenu();
+
+      const params = {
+        menuManager: menuManager,
+        displayAreaId: "AdsDisplayArea",
+        adsList: getAdsList(),
+        /*This is the initial delay (in milliseconds) before the first ad is displayed after starting 
+        or restarting the ad display. Default value is 2000 (2 seconds).*/
+        startDelayDuration: 3000,
+        /*This is the duration (in milliseconds) each ad is displayed for. 
+        Default value is 6000 (6 seconds). This will be updated 
+        to the duration specified in each ad object.*/
+        displayDuration: 6000,
+        /*This is the delay (in milliseconds) between ads. Default value is 0 (0 second).*/
+        pauseDuration: 1000,
+        /*This is the duration (in milliseconds) of user inactivity after
+        which the ad display is restarted. Default value is 10000 (10 seconds).*/
+        idleDuration: 20000,
+        /* time to wait before restarting the ad sequence*/
+        loopPauseDuration: 15000
+      };
+
+      adDisplayManager = new AdDisplayManager(params);
+
+      /*       document.addEventListener('mousemove', () => adDisplayManager.continueIdle());
+            document.addEventListener('keydown', () => adDisplayManager.continueIdle());
+            document.addEventListener('click', () => adDisplayManager.continueIdle());
+       */
+
+    }
+  </script>
+
+
+
+</body>
+
+</html>

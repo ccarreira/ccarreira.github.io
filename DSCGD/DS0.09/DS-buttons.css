@@ -1,0 +1,97 @@
+.button {
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    user-select: none;
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /*  padding: 20px;*/
+    width: 240px;
+    height: 240px;
+    overflow: hidden;
+}
+
+.btMain img {
+    width: 110px;
+    height: 110px;
+    /* margin-bottom: 10px;*/
+}
+
+.btMain {
+    position: relative;
+    background-color: #FFFFFFff;
+    color: #0A243E;
+    border: 3px solid #0071CEff;
+    transition: background-color 0.2s;
+}
+
+.btMain.active {
+    /* pointer-events: none;  */
+    background-color: #f2f4f8;
+}
+
+.btMainDarkM {
+    color: #ffffff;
+    border: 3px solid #FFFFFFff;
+    /* Coloca SVG a branco*/
+    filter: brightness(100);
+    transition: background-color 0.2s;
+}
+
+/*   .btMain::before {
+    content: '';
+    position: absolute;
+    top: -96px;
+    left: 0;
+    right: 0;
+    height: 48px;
+    width: 240px;
+    background-color: #0071CEff;
+    border-radius: 8px;
+} */
+ 
+.btSub {
+    background-color: #FFFFFFff;
+    color: #0A243E;
+    border: 3px solid #0071CEff;
+    transition: background-color 0.2s;
+}
+
+.btSub:hover {
+    background-color: #0071CEff;
+    color: #ffffff;
+}
+
+/* BUTTON CAMPANHA */
+
+.img-text-wrapper {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* .img-text-wrapper img {
+    position: relative;
+    width: 100%;
+    height: 100%;
+} */
+
+.button-campanha-text {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+}
+
+
+
+/*       document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.button').forEach(function(element) {
+                var randomDuration = Math.random() * 5;  // This generates a random number between 0 and 5
+                element.style.animation = `fadein ${randomDuration}s ease-out forwards`;
+            });
+        }); */

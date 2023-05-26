@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DS2023</title>
+  <link rel="stylesheet" type="text/css" href="DS.css" />
+  <link rel="stylesheet" type="text/css" href="DS-buttons.css" />
+  <link rel="stylesheet" type="text/css" href="DS-marquees.css" />
+  <link rel="stylesheet" type="text/css" href="DS-video.css" />
+  <link rel="stylesheet" type="text/css" href="DS-ads.css" />
+  <link rel="stylesheet" type="text/css" href="DS-qrcode.css">
+  <link rel="stylesheet" type="text/css" href="DS-foundations.css">
+  <link rel="stylesheet" type="text/css" href="DS-animations.css">
+  <style></style>
+</head>
+
+<body>
+ 
+  <video autoplay muted loop class="bg-video">
+    <source src="VIDEOS/23946_futureCell_HD_BG.mp4" type="video/mp4">
+    Your browser does not support HTML5 video.
+  </video>
+
+
+  <div id="background">
+    <img src="IMG/bkg-credito-pessoal.jpg">
+  </div>
+
+  <div class="H1-AD WHITE_TXT">
+    Quer <BR>Viajar?
+  </div>
+
+    <nav id="menu_ad" class="nav-AD">
+      <div onclick="menuManager.goToContent('_creditopessoal_multi_campanha.html');" style="background-color: #D65778;"
+        class="button btSub Hx2 slot4 button-AD-CTA WHITE_TXT WHITE_BOR">
+      <div>Toque para <BR>saber mais</div>
+      </div>
+    </nav>
+
+
+    <div class="nav-main TRANSPARENT">
+    </div>
+
+
+
+
+
+
+  <script src="DS-AdsList.js"></script>
+  <script src="DS-AdsManager.js"></script>
+
+
+  <script src="DS.js"></script>
+  <script src="DS-qrcode.js"></script>
+  <script>
+    let menuManager;
+    let qrCodeManager;
+    let adDisplayManager;
+
+    window.onload = function () {
+      menuManager = new MenuManager();
+      menuManager.showDefaultMenu();
+
+      const params = {
+        menuManager: menuManager,
+        displayAreaId: "AdsDisplayArea",
+        adsList: getAdsList(),
+        /*This is the initial delay (in milliseconds) before the first ad is displayed after starting 
+        or restarting the ad display. Default value is 2000 (2 seconds).*/
+        startDelayDuration: 1000,
+        /*This is the duration (in milliseconds) each ad is displayed for. 
+        Default value is 6000 (6 seconds). This will be updated 
+        to the duration specified in each ad object.*/
+        displayDuration: 6000,
+        /*This is the delay (in milliseconds) between ads. Default value is 0 (0 second).*/
+        pauseDuration: 1000,
+        /*This is the duration (in milliseconds) of user inactivity after
+        which the ad display is restarted. Default value is 10000 (10 seconds).*/
+        idleDuration: 20000,
+        /* time to wait before restarting the ad sequence*/
+        loopPauseDuration: 15000
+      };
+
+      adDisplayManager = new AdDisplayManager(params);
+
+      /*       document.addEventListener('mousemove', () => adDisplayManager.continueIdle());
+            document.addEventListener('keydown', () => adDisplayManager.continueIdle());
+            document.addEventListener('click', () => adDisplayManager.continueIdle());
+       */
+
+    }
+  </script>
+
+  <script>
+    document.getElementById('bt_catalogo_cartoes').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menuManager.goToContent('_cartoes.html');
+    });
+    document.getElementById('bt_catalogo_seguros').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menuManager.goToContent('_seguros.html');
+    });
+    document.getElementById('bt_catalogo_credito_pessoal').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menuManager.goToContent('_creditopessoal.html');
+    });
+
+    document.getElementById('bt_precario').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      menuManager.goToContent('_precario.html');
+    });
+    document.getElementById('bt_catalogo').addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      adDisplayManager.gotoSleep();
+      menuManager.updateMenu('menu_catalogo');
+    });
+  </script>
+
+
+</body>
+
+</html>
